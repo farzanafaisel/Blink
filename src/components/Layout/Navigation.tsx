@@ -1,4 +1,4 @@
-import { Link, NavLink, useNavigate } from 'react-router-dom'
+import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { Settings } from 'lucide-react'
 import { Button, IconButton } from '@/components/Button'
 import { Logo } from './Logo'
@@ -18,6 +18,8 @@ const links = [
 */
 export function Navigation() {
   const navigate = useNavigate()
+  /* The Landing hero already carries the primary Play CTA. */
+  const onLanding = useLocation().pathname === '/'
 
   return (
     <header className="flex h-20 items-center justify-between px-6 max-md:justify-center md:px-12">
@@ -46,7 +48,9 @@ export function Navigation() {
         >
           <Settings aria-hidden="true" className="size-5" />
         </IconButton>
-        <Button onClick={() => navigate('/play/word')}>Play</Button>
+        {!onLanding && (
+          <Button onClick={() => navigate('/play/word')}>Play</Button>
+        )}
       </div>
     </header>
   )

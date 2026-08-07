@@ -37,7 +37,10 @@ export function Landing() {
           variants={fadeInUp}
           className="mt-4 flex w-full flex-col items-center gap-3 sm:flex-row sm:justify-center"
         >
-          <Button onClick={() => navigate('/play/word')} className="max-sm:w-full">
+          <Button
+            onClick={() => navigate('/play/word')}
+            className="min-w-32 max-sm:w-full"
+          >
             Play
           </Button>
           {hasProgress && (
@@ -49,7 +52,7 @@ export function Landing() {
               Continue · Chapter {chapterIndex + 1}
             </Button>
           )}
-          <Button variant="ghost" onClick={() => navigate('/key')}>
+          <Button variant="coral" onClick={() => navigate('/key')}>
             Morse Key
           </Button>
         </motion.div>
