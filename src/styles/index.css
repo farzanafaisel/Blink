@@ -1,0 +1,152 @@
+@import 'tailwindcss';
+
+/*
+  Design tokens from Figma `beep`, pages 005 Design Tokens, 006 Typography,
+  007 Colours. Names follow the dev-notes convention (page 012):
+  Color/Background/Primary → --color-background-primary.
+*/
+@theme {
+  --font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono Variable', ui-monospace, monospace;
+
+  /* Background */
+  --color-background-primary: #e3f4fb;
+  --color-background-secondary: #cfeaf7;
+  --color-surface-elevated: #ffffff;
+  --color-surface-glass: #eff7fb;
+  --color-surface-hover: #e4f0f7;
+
+  /* Text */
+  --color-text-primary: #1c4966;
+  --color-text-secondary: #5b87a6;
+  --color-text-muted: #6e9ab5;
+
+  /* Accent: indigo mark + signal gold */
+  --color-accent-default: #2f2e61;
+  --color-accent-hover: #f7da6e;
+  --color-accent-pressed: #e0b32e;
+  --color-accent-text: #2e8c74;
+  --color-accent-tint: #f8efc9;
+  --color-accent-focus: #efd26f;
+
+  /* CTA: actions */
+  --color-cta-default: #4caf50;
+  --color-cta-hover: #6bc76f;
+  --color-cta-pressed: #3e9b42;
+  --color-cta-on: #ffffff;
+  --color-cta-tint: #dff2de;
+  --color-cta-focus: #90ce9d;
+
+  /* Feedback */
+  --color-feedback-success: #5bb24a;
+  --color-feedback-warning: #e8964f;
+  --color-feedback-error: #e8637e;
+  --color-feedback-info: #5b8de0;
+
+  /* Candy particles */
+  --color-particle-violet: #8f7fd8;
+  --color-particle-mint: #64c1a4;
+  --color-particle-pink: #e88bb0;
+
+  /* Borders & states */
+  --color-border-subtle: #d3e5ef;
+  --color-border-strong: #bdd7e5;
+  --color-state-disabled: #bfd8e6;
+  --color-scrim: rgb(22 64 92 / 0.4);
+
+  /* Component surfaces */
+  --color-surface-overlay: #ffffff;
+  --color-progress-track: #d3e5ef;
+  --color-progress-fill: #4caf50;
+  --color-tint-success: #d5ede9;
+  --color-tint-error: #e3e5ee;
+
+  /* Radius: Radius/Small … Radius/Full */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-2xl: 24px;
+
+  /* Elevation: flat by default; shadows only on overlays */
+  --shadow-card: 0 2px 8px rgb(28 73 102 / 0.08);
+  --shadow-overlay: 0 8px 24px rgb(28 73 102 / 0.12);
+  --shadow-toast:
+    0 4px 16px rgb(33 26 77 / 0.11), 0 24px 64px rgb(33 26 77 / 0.17);
+
+  /* Motion */
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --ease-decelerate: cubic-bezier(0, 0, 0, 1);
+  --duration-fast: 150ms;
+  --duration-base: 200ms;
+  --duration-slow: 300ms;
+  --duration-celebrate: 600ms;
+
+  --tracking-overline: 0.12em;
+}
+
+html,
+body,
+#root {
+  min-height: 100dvh;
+}
+
+body {
+  @apply bg-background-primary font-sans text-text-primary antialiased;
+}
+
+::selection {
+  @apply bg-accent-default text-white;
+}
+
+/* Settings → Accessibility → High contrast (page 019). */
+.high-contrast {
+  --color-text-secondary: #38617d;
+  --color-text-muted: #4a7492;
+  --color-border-subtle: #bdd7e5;
+  --color-border-strong: #9dc0d4;
+}
+
+/* Type scale: page 006. Display/H1/H2 ramp with clamp() per dev notes. */
+@utility text-display {
+  font-size: clamp(64px, 4.5vw + 24px, 96px);
+  @apply font-sans font-semibold leading-[1.04] tracking-[-0.025em];
+}
+@utility text-h1 {
+  font-size: clamp(36px, 3vw + 20px, 64px);
+  @apply font-sans font-semibold leading-[1.125] tracking-[-0.02em];
+}
+@utility text-h2 {
+  font-size: clamp(32px, 2vw + 18px, 48px);
+  @apply font-sans font-semibold leading-[1.16] tracking-[-0.015em];
+}
+@utility text-h3 {
+  @apply font-sans text-[32px] font-semibold leading-[40px] tracking-[-0.01em];
+}
+@utility text-h4 {
+  @apply font-sans text-2xl font-medium leading-8 tracking-[-0.005em];
+}
+@utility text-body-lg {
+  @apply font-sans text-lg font-normal leading-7;
+}
+@utility text-body-md {
+  @apply font-sans text-base font-normal leading-6;
+}
+@utility text-body-sm {
+  @apply font-sans text-sm font-normal leading-5;
+}
+@utility text-caption {
+  @apply font-sans text-xs font-normal leading-4 tracking-[0.005em];
+}
+@utility text-btn {
+  @apply font-sans text-[15px] font-medium leading-4 tracking-[0.005em];
+}
+@utility text-overline {
+  @apply font-sans text-xs font-medium uppercase leading-4 tracking-overline;
+}
+@utility text-morse-lg {
+  @apply font-mono text-5xl font-medium leading-[56px] tracking-[0.08em];
+}
+@utility text-morse-sm {
+  @apply font-mono text-xl font-normal leading-7 tracking-[0.06em];
+}
